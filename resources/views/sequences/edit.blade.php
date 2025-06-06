@@ -13,7 +13,6 @@
                     <form action="{{ route('sequences.update', $sequence) }}" method="post">
                         @csrf
                         @method('PUT')
-                        @include('sequences.form', ['sequence' => $sequence, 'selectedTagId' => $sequence->tagMapping->tag_id ?? null])
                         <input type="submit" class="btn btn-sm btn-primary" value="{{ __('Save') }}">
                     </form>
                 </div>
