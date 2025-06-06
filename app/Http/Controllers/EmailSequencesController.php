@@ -18,7 +18,6 @@ class EmailSequencesController extends Controller
 {
     public function index(): View
     {
-        $sequences = EmailSequence::with(['tagMapping.tag', 'emails.template'])
             ->where('workspace_id', Sendportal::currentWorkspaceId())
             ->get();
 

@@ -26,7 +26,6 @@
                     @forelse($sequences as $sequence)
                         <tr>
                             <td>{{ $sequence->name }}</td>
-                            <td>{{ $sequence->tagMapping?->tag?->name }}</td>
                             <td>{{ $sequence->total_emails }}</td>
                             <td>{{ $sequence->is_active ? __('Active') : __('Inactive') }}</td>
                             <td class="td-fit">
