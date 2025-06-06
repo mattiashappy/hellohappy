@@ -109,7 +109,9 @@ Route::namespace('Workspaces')->middleware(
 Route::middleware(['auth', 'verified', RequireWorkspace::class])->group(
     static function () {
         Sendportal::webRoutes();
-        Route::get('sequences', [EmailSequencesController::class, 'index'])->name('sequences.index');
+        Route::resource('sequences', EmailSequencesController::class)->except(['show']);
+        Route::post('sequences/{sequence}/steps', [EmailSequencesController::class, 'storeStep'])->name('sequences.steps.store');
+        Route::delete('sequences/{sequence}/steps/{step}', [EmailSequencesController::class, 'destroyStep'])->name('sequences.steps.destroy');
     }
 );
 
