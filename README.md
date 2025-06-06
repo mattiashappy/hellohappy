@@ -15,6 +15,10 @@ SendPortal includes subscriber and list management, email campaigns, message tra
 
 SendPortal integrates with [Amazon SES](https://aws.amazon.com/ses), [Postmark](https://postmarkapp.com), [Sendgrid](https://sendgrid.com), [Mailgun](https://www.mailgun.com/) and [Mailjet](https://www.mailjet.com).
 
+## Email Sequences
+SendPortal includes lightweight drip sequences using existing campaigns, templates and subscriber tags. When a subscriber receives a tag linked to a sequence they are automatically enrolled. The default schedule sends an opening email immediately, a follow-up two days later and a final email five days after that.
+Administrators can manage sequences in the UI where each sequence is associated with a trigger tag and a set of email steps.
+
 The [SendPortal](https://github.com/mettle/sendportal) application acts as a wrapper around SendPortal Core. This will allow you to run your own copy of SendPortal as a stand-alone application, including user authentication and multiple workspaces.
 
 ## Installation

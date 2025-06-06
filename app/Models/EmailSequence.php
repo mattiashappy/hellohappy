@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\TagEmailSequence;
 
 class EmailSequence extends Model
 {
@@ -55,6 +57,11 @@ class EmailSequence extends Model
     public function activeSubscriberSequences(): HasMany
     {
         return $this->subscriberSequences()->where('status', 'active');
+    }
+
+    public function tagMapping(): HasOne
+    {
+        return $this->hasOne(TagEmailSequence::class);
     }
 
     /**
