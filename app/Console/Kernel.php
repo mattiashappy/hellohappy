@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
             \Log::info('✅ Cron test ran at: ' . now());
         })->everyMinute();
         $schedule->command('sequences:process')->everyFiveMinutes();
+        $schedule->command('sequences:enroll')->everyFiveMinutes();
     }
 
     /**
