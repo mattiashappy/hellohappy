@@ -26,7 +26,6 @@
                     @forelse($sequences as $sequence)
                         <tr>
                             <td>{{ $sequence->name }}</td>
-                            <td>{{ $sequence->tagMapping?->tag?->name }}</td>
                             <td>{{ $sequence->total_emails }}</td>
                             <td>{{ $sequence->is_active ? __('Active') : __('Inactive') }}</td>
                             <td class="td-fit">
@@ -38,6 +37,23 @@
                                 </form>
                             </td>
                         </tr>
+                        @if($sequence->emails->count())
+                            <tr>
+                                <td colspan="5">
+                                    <ul class="mb-0">
+                                        @foreach($sequence->emails as $email)
+                                            <li>
+                                                {{ $email->send_order }}. {{ $email->subject }}
+                                                ({{ __('Delay') }}: {{ $email->delay_days }} {{ __('days') }})
+                                                @if($email->template)
+                                                    - {{ $email->template->name }}
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endif
                     @empty
                         <tr>
                             <td colspan="5" class="text-center">{{ __('No email sequences found.') }}</td>
