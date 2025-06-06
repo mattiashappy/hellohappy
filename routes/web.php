@@ -7,6 +7,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Sendportal\Base\Facades\Sendportal;
+use App\Http\Controllers\EmailSequencesController;
 
 Auth::routes(
     [
@@ -106,8 +107,9 @@ Route::namespace('Workspaces')->middleware(
 );
 
 Route::middleware(['auth', 'verified', RequireWorkspace::class])->group(
-    static function () {      
+    static function () {
         Sendportal::webRoutes();
+        Route::get('sequences', [EmailSequencesController::class, 'index'])->name('sequences.index');
     }
 );
 
